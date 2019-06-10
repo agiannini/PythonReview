@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block header %}Welcome To The Book Review {% endblock %}
+{% block body %}
+
+<h1>{{my_title}}</h1>
+<h3> By: {{my_author}}. Published in {{my_year}}. ISBN is : {{my_isbn}}.</h3>
+<p class="mx-auto mt-5 text-white">This book has received {{goodreads_total}} reveiws on Goodreads.com. It has an average of {{goodreads_avg}} stars.</p>
+
+<p>Here are our reviews!</p>
+
+<ul class="list-group">
+    {% for review in reviews %}
+    <li class="list-group-item">
+        <div class="containter">
+            <div class="row">
+                <div class="col">
+                    {{review.username}}
+                </div>
+                <div class="col">
+                    {{review.stars}}
+                </div>
+                <div class="col">
+                    {{review.review}}
+                </div>
+
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+
+<div class="mx-auto mt-5 bg-info">
+    <p>
+        What did you think of {{my_title}}?
+    </p>
+    <form action="{{ url_for('mybooks', id=my_id) }}" method="post">
+
+        <div class="form-group">
+            <select class="form-control" name="stars">
+                <option value="1">1 Star</option>
+                <option value="2">2 Stars</option>
+                <option value="3">3 Stars</option>
+                <option value="4">4 Stars</option>
+                <option value="5">5 Stars</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Your Review: </label>
+            <textarea class="form-control" name="review" rows="5" id="comment"></textarea>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

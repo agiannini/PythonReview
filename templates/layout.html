@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Assignment 2</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <nav>
+        <p>
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('index')}}">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('register')}}">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('logout')}}">Login/Logout</a>
+                </li>
+            </ul>
+    </nav>
+    <nav class="navbar sticky-top navbar-light bg-info text-light justify-content-between">
+        <a class="navbar-brand">My Book Review Site</a>
+
+        <form class="form-inline" action="{{ url_for('results_page') }}" method="post">
+            <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search Book Name, ISBN, Author or Title">
+            <button class="btn btn-primary btn-sm" type="submit">Search</button>
+        </form>
+
+    </nav>
+    <div class="d-block p-5 bg-success">
+      {% macro newComponent(text) -%}
+          <div class='container'><p>{{text}}</p></div>
+      {%- endmacro %}
+        {% block body %}
+        {% endblock %}
+    </div>
+
+
+</body>
+
+</html>

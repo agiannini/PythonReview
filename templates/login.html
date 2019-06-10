@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block header %}Welcome To The Book Review {% endblock %}
+
+{% block body %}
+<h1>{{message}}</h1>
+<p>
+    Login Below, or <a href={{ url_for('register')}}> Register!</a>
+</p>
+<div class="d-block p-3 m-auto bg-info">
+    <form action="{{ url_for('check_login')}}" method="post">
+        <fieldset>
+            <legend>Login</legend>
+            <div class="form-group">
+                <input type="text" name="username" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Password">
+            </div>
+            <button>Submit</button>
+        </fieldset>
+    </form>
+</div>
+
+
+{% endblock %}
