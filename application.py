@@ -32,7 +32,7 @@ Session(app)
 
 
 # Purpose: landing page.
-# Appraoch: Checks to see if user is logged in. If not, displays the login page.
+# Appraoch: displays the search page with the top five seaches.
 @app.route("/")
 def index():
         session['username'] = '';
@@ -43,8 +43,7 @@ def index():
 
 
 
-# Purpose: registration page.
-# Appraoch: Checks if user is logged in. If not, displays registration page.
+# Displays the registration page.
 @app.route("/register")
 def register():
     return render_template("register.html")
@@ -71,7 +70,7 @@ def submit_registration():
 
 
 # Purpose: to log the user out of the session
-# Appraoch: removes username from session, displays error if allready logged in.
+# Appraoch: removes username from session and prompts for login
 @app.route("/logout")
 def logout():
     if 'username' not in session:
